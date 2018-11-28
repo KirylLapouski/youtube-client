@@ -1,7 +1,6 @@
-class Search{
-  search(){
-    console.log('asdf')
-    return fetch(YOUTUBE_API)
+class Search {
+  static search(query) {
+    return fetch(query);
   }
 }
-export default Search
+module.exports = Search;

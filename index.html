@@ -9,6 +9,12 @@
 </head>
 <body>
   <input type="text" class="search__input" placeholder="Enter query">
-  <script src="./js/build.js"></script>
+  <script src="./dist/search.js"></script>
+
+  <script>
+    Search.search('check')
+    document.querySelector('input.search__input').addEventListener('input', ()=>{
+    })
+  </script>
 </body>
 </html>

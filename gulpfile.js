@@ -1,27 +1,31 @@
-let gulp = require("gulp");
-let {watch, parallel} = require('gulp')
-let mocha = require('gulp-mocha')
-let babel = require('gulp-babel')
+const gulp = require('gulp');
+const { watch, parallel } = require('gulp');
+const mocha = require('gulp-mocha');
+const babel = require('gulp-babel');
+const browserify = require('gulp-browserify');
 
-function defaultHanlder(){
+function defaultHanlder() {
   return gulp.src('js/**.js')
     .pipe(babel({
-      presets:["@babel/preset-env", "@babel/preset-es2015"]
+      presets: ['@babel/preset-env'],
     }))
-    .pipe(gulp.dest('dist'))
+    .pipe(browserify({
+      insertGlobals: true,
+    }))
+    .pipe(gulp.dest('dist'));
 }
 
 function testHandler() {
   return gulp.src('tests/*.js')
     .pipe(mocha({
-      compilers:['js:@babel/register']
+      compilers: ['js:@babel/register'],
     }));
 }
 
-gulp.task('default',defaultHanlder )
-gulp.task('test', testHandler)
-gulp.task('watch',(next)=>{
-  watch('./js/*', parallel(defaultHanlder, testHandler))
-  watch('./tests/*', testHandler)
-  next()
-})
+gulp.task('default', defaultHanlder);
+gulp.task('test', testHandler);
+gulp.task('watch', (next) => {
+  watch('./js/*', parallel(defaultHanlder, testHandler));
+  watch('./tests/*', testHandler);
+  next();
+});
