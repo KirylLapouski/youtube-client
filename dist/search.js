@@ -21,6 +21,7 @@ function () {
   _createClass(Search, [{
     key: "search",
     value: function search() {
+      console.log('asdf');
       return fetch(YOUTUBE_API);
     }
   }]);

@@ -1,10 +1,10 @@
-// import constants from "./constants";
+import constants from "./constants";
 import _ from 'lodash'
 class searchQueryBuilder {
   constructor(){
     this.queryString = '';
     this
-    .setDomain( onstants.YOUTUBE_API)
+    .setDomain( constants.YOUTUBE_API)
     .setParams()
     .setKey(constants.API_KEY)
     .setOtherStuff()
@@ -24,13 +24,13 @@ class searchQueryBuilder {
     this.queryString += `?`
     return this
   }
-  
+
   setOtherStuff(){
     this.queryString += '&type=video&part=snippet&maxResults=15'
     return this
   }
 
-  setQuery( query){
+  setSearch(query){
     this.queryString += `&q=${query}`
     return this
   }

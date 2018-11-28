@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _constants = _interopRequireDefault(require("./constants"));
+
 var _lodash = _interopRequireDefault(require("lodash"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -22,7 +24,7 @@ function () {
     _classCallCheck(this, searchQueryBuilder);
 
     this.queryString = '';
-    this.setDomain(onstants.YOUTUBE_API).setParams().setKey(constants.API_KEY).setOtherStuff();
+    this.setDomain(_constants.default.YOUTUBE_API).setParams().setKey(_constants.default.API_KEY).setOtherStuff();
   }
 
   _createClass(searchQueryBuilder, [{
@@ -50,8 +52,8 @@ function () {
       return this;
     }
   }, {
-    key: "setQuery",
-    value: function setQuery(query) {
+    key: "setSearch",
+    value: function setSearch(query) {
       this.queryString += "&q=".concat(query);
       return this;
     }
